@@ -1,0 +1,20 @@
+version: '3.9'
+
+volumes:
+  node_modules: {}
+
+services:
+  app:
+    image: pm4-node
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: pm4_node
+    ports:
+      - '3000:3000'
+    environment:
+      NODE_ENV: development
+    volumes:
+      - .:/app
+      - node_modules:/app/node_modules
+    tty: true
