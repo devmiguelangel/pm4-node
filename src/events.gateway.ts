@@ -20,7 +20,7 @@ export class EventsGateway implements OnGatewayConnection, OnGatewayDisconnect {
 
   handleConnection(client: Socket, ...args: any[]) {
     this.clients.push(client);
-    console.log('Client connected: ', client.id);
+    console.log('Client connected: ');
   }
 
   handleDisconnect(client: Socket) {
@@ -40,5 +40,19 @@ export class EventsGateway implements OnGatewayConnection, OnGatewayDisconnect {
 
     // Broadcast the mouse position to the clients
     client.broadcast.emit('mousePosition', { ...data, id: clientId });
+  }
+  // modeler update
+  @SubscribeMessage('modelerUpdate')
+  handleModelerUpdate(
+    @ConnectedSocket() client: Socket,
+    @MessageBody() data: object,
+  ): void {
+    // Get the client id
+    const clientId = client.id;
+    // Broadcast the mouse position to the clients
+    client.broadcast.emit('modelerUpdateClient', {
+      xml: data,
+      id: clientId,
+    });
   }
 }
