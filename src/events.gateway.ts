@@ -20,7 +20,7 @@ export class EventsGateway implements OnGatewayConnection, OnGatewayDisconnect {
 
   handleConnection(client: Socket, ...args: any[]) {
     this.clients.push(client);
-    console.log('Client connected: ');
+    console.log('Client connected: ', client.id);
   }
 
   handleDisconnect(client: Socket) {
