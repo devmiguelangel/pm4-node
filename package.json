@@ -1,8 +1,7 @@
 {
-  "name": "pm4-node",
+  "name": "pm4-rt-server",
   "version": "0.0.1",
-  "description": "",
-  "author": "",
+  "description": "Processmaker real-time server",
   "private": true,
   "license": "MIT",
   "scripts": {
