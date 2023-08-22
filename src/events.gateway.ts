@@ -31,10 +31,7 @@ export class EventsGateway implements OnGatewayConnection, OnGatewayDisconnect {
   }
 
   @SubscribeMessage('mouseMove')
-  handleMousePosition(
-    @ConnectedSocket() client: Socket,
-    @MessageBody() data: object,
-  ): void {
+  handleMousePosition(@ConnectedSocket() client: Socket, @MessageBody() data: object): void {
     // Get the client id
     const clientId = client.id;
 
@@ -43,10 +40,7 @@ export class EventsGateway implements OnGatewayConnection, OnGatewayDisconnect {
   }
   // modeler update
   @SubscribeMessage('modelerUpdate')
-  handleModelerUpdate(
-    @ConnectedSocket() client: Socket,
-    @MessageBody() data: object,
-  ): void {
+  handleModelerUpdate(@ConnectedSocket() client: Socket, @MessageBody() data: object): void {
     // Get the client id
     const clientId = client.id;
     // Broadcast the mouse position to the clients
